@@ -102,31 +102,6 @@ export default function Home() {
           ))}
         </div>
       </section>
-
-      {/* CATEGORIES */}
-      <section className="pt-12 pb-16 md:py-16" id="categories">
-        <div className="container">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Browse Categories</h2>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mt-6">
-            {categories.map((c) => (
-              <Link
-                to="/products"
-                key={c.name}
-                className="card hover:bg-white/10 transition"
-              >
-                <div className="flex items-center justify-between">
-                  <div className="text-lg font-semibold">{c.name}</div>
-                  <span className={`w-3 h-3 rounded-full ${dot(c.color)}`} />
-                </div>
-                <p className="text-sm text-white/70 mt-2">
-                  Explore {c.name.toLowerCase()} in stock.
-                </p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
     </>
   );
 }
