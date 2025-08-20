@@ -8,7 +8,7 @@ export default function Home() {
   // PAGE DATA
   const hero = {
     title: [
-      { text: "Smoke", color: "text-rose-500" },      // red family accent
+      { text: "Smoke", color: "text-rose-500" }, // red family accent
       { text: "•",     color: "text-white" },
       { text: "Shop",  color: "text-yellow-300" },
       { text: "•",     color: "text-white" },
@@ -19,8 +19,8 @@ export default function Home() {
     image:
       "https://static.vecteezy.com/system/resources/previews/002/187/437/original/smoke-shop-neon-signs-style-text-free-vector.jpg",
     cta: {
-      primary: { label: "Browse Products", href: "/#/products" },
-      secondary: { label: "Latest Deals", href: "/#/deals" },
+      primary: { label: "Browse Products", to: "/products" }, // ✅ use Link's `to`
+      secondary: { label: "Latest Deals", to: "/deals" },
     },
   };
 
@@ -28,10 +28,10 @@ export default function Home() {
 
   const categories: { name: string; color: Color }[] = [
     { name: "Disposables", color: "red" },
-    { name: "E-Juice", color: "yellow" },
-    { name: "Hookah", color: "green" },
-    { name: "Cigars", color: "yellow" },
-    { name: "Glass", color: "red" },
+    { name: "E-Juice",     color: "yellow" },
+    { name: "Hookah",      color: "green" },
+    { name: "Cigars",      color: "yellow" },
+    { name: "Glass",       color: "red" },
     { name: "Accessories", color: "green" },
   ];
 
@@ -58,15 +58,19 @@ export default function Home() {
             </p>
 
             <div className="mt-5 md:mt-6 flex gap-3">
-              <a
+              {/* ✅ Use <Link to="..."> so HashRouter builds #/routes automatically */}
+              <Link
                 className="btn btn-primary bg-rose-500 px-5 py-3 text-sm sm:text-base"
-                href={hero.cta.primary.href}
+                to={hero.cta.primary.to}
               >
                 {hero.cta.primary.label}
-              </a>
-              <a className="btn btn-ghost px-5 py-3 text-sm sm:text-base" href={hero.cta.secondary.href}>
+              </Link>
+              <Link
+                className="btn btn-ghost px-5 py-3 text-sm sm:text-base"
+                to={hero.cta.secondary.to}
+              >
                 {hero.cta.secondary.label}
-              </a>
+              </Link>
             </div>
 
             <div className="mt-5 md:mt-6 inline-flex items-center gap-2 text-xs text-white/70 border border-white/15 bg-white/5 rounded-full px-3 py-1">
@@ -100,6 +104,31 @@ export default function Home() {
               {b}
             </span>
           ))}
+        </div>
+      </section>
+
+      {/* CATEGORIES */}
+      <section className="pt-12 pb-16 md:py-16" id="categories">
+        <div className="container">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Browse Categories</h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mt-6">
+            {categories.map((c) => (
+              <Link
+                to="/products"
+                key={c.name}
+                className="card hover:bg-white/10 transition"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="text-lg font-semibold">{c.name}</div>
+                  <span className={`w-3 h-3 rounded-full ${dot(c.color)}`} />
+                </div>
+                <p className="text-sm text-white/70 mt-2">
+                  Explore {c.name.toLowerCase()} in stock.
+                </p>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
     </>
