@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* palette tokens */
+:root{
+  --bg: #000;
+  --fg: #fff;
+  --accent: #ef4444;   /* red-500 */
+  --accent2: #22c55e;  /* green-500 */
+  --warn: #facc15;     /* yellow-400 */
+}
+
+html, body, #root { height: 100%; }
+body { background: var(--bg); color: var(--fg); }
+
+/* tiny helpers */
+.section { @apply py-16 md:py-20; }
+.h1 { @apply text-4xl md:text-6xl font-extrabold tracking-tight; }
+.h2 { @apply text-2xl md:text-4xl font-bold; }
+.lead { @apply text-lg md:text-xl text-white/80; }
+
+.card { @apply rounded-2xl border border-white/10 bg-white/5 backdrop-blur p-6 shadow-soft; }
+.btn { @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 font-semibold transition; }
+.btn-primary { @apply bg-[var(--accent)] text-black hover:opacity-90; }
+.btn-ghost { @apply border border-white/15 bg-white/5 text-white hover:bg-white/10; }
+
+.badge { @apply inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm border border-white/15 bg-white/5; }
